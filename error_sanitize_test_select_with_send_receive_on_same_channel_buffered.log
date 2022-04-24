@@ -1,0 +1,5 @@
+Running test case: test_select_with_send_receive_on_same_channel_buffered : Testing select with send/recv on same channel: buffered ...
+channel size is 1
+--------------------
+FAILURE: See test.c Line 1729: test_select_with_send_receive_on_same_channel: Invalid index
+Tests run: 1

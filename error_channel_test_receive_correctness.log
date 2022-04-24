@@ -1,0 +1,8 @@
+Running test case: test_receive_correctness : Testing the receive correctness ...
+<<<<<<< HEAD
+FAILURE: See test.c Line 290: test_receive_correctness: Testing buffer size failed 1
+=======
+FAILURE: See test.c Line 291: test_receive_correctness: Testing channel values failed 1
+>>>>>>> 677b5902b74db4b44568fdde96bb76b31f911399
+
+Tests run: 1

@@ -1,0 +1,5 @@
+Running test case: test_select_with_select_unbuffered : Testing select with select : unbuffered ...
+channel size is 0
+--------------------
+FAILURE: See test.c Line 1574: test_select_with_select: It isn't blocked as expected
+Tests run: 1

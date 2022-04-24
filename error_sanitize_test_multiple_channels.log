@@ -1,0 +1,32 @@
+<<<<<<< HEAD
+ThreadSanitizer:DEADLYSIGNAL
+==6432==ERROR: ThreadSanitizer: SEGV on unknown address 0x000000000000 (pc 0x55f1112b6db6 bp 0xb2c6fdb6a5b6aa00 sp 0x7f6f5d2be1e0 T6439)
+==6432==The signal is caused by a READ memory access.
+==6432==Hint: address points to the zero page.
+    #0 __tsan::MetaMap::GetAndLock(__tsan::ThreadState*, unsigned long, unsigned long, bool, bool) <null> (channel_sanitize+0x73db5)
+    #1 __tsan::Release(__tsan::ThreadState*, unsigned long, unsigned long) <null> (channel_sanitize+0x6b90a)
+    #2 sem_post <null> (channel_sanitize+0x326fe)
+    #3 helper_send /home/max/Desktop/p3-tgroup20/test.c:89 (channel_sanitize+0xa3c10)
+    #4 __tsan_thread_start_func <null> (channel_sanitize+0x100c6)
+    #5 start_thread /build/glibc-eX1tMB/glibc-2.31/nptl/pthread_create.c:477 (libpthread.so.0+0x9608)
+    #6 __clone <null> (libc.so.6+0x122292)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV (/home/max/Desktop/p3-tgroup20/channel_sanitize+0x73db5) in __tsan::MetaMap::GetAndLock(__tsan::ThreadState*, unsigned long, unsigned long, bool, bool)
+==6432==ABORTING
+=======
+==================
+WARNING: ThreadSanitizer: thread leak (pid=24797)
+  Thread T4 (tid=24802, finished) created by main thread at:
+    #0 pthread_create <null> (channel_sanitize+0x12982)
+    #1 test_multiple_channels /home/htillinger/p3-tgroup20/test.c:672 (channel_sanitize+0xa5921)
+    #2 single_test /home/htillinger/p3-tgroup20/test.c:2057 (channel_sanitize+0xaa735)
+    #3 main /home/htillinger/p3-tgroup20/test.c:2096 (channel_sanitize+0x95be)
+
+SUMMARY: ThreadSanitizer: thread leak (/home/htillinger/p3-tgroup20/channel_sanitize+0x12982) in __interceptor_pthread_create
+==================
+ThreadSanitizer: reported 1 warnings
+Running test case: test_multiple_channels : Testing creating multiple channels ...
+FAILURE: See test.c Line 676: test_multiple_channels: Testing multiple channels1
+Tests run: 1
+>>>>>>> 677b5902b74db4b44568fdde96bb76b31f911399

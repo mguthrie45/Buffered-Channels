@@ -1,0 +1,8 @@
+Running test case: test_select_and_non_blocking_receive_buffered : Testing select and non-blocking receive : buffered ...
+channel size is 1
+--------------------
+
+send blocking
+  sent Message
+FAILURE: See test.c Line 1512: test_select_and_non_blocking_receive: It isn't blocked as expected
+Tests run: 1

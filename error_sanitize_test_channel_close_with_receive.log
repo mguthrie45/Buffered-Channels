@@ -1,0 +1,3 @@
+Running test case: test_channel_close_with_receive : Testing channel close API ...
+FAILURE: See test.c Line 626: test_channel_close_with_receive: Testing channel close failed
+Tests run: 1

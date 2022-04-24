@@ -1,0 +1,3 @@
+Running test case: test_multiple_channels : Testing creating multiple channels ...
+FAILURE: See test.c Line 676: test_multiple_channels: Testing multiple channels1
+Tests run: 1

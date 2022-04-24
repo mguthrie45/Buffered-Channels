@@ -1,0 +1,12 @@
+Running test case: test_cpu_utilization_select : Testing CPU utilization for select API (takes around 30 seconds) ...
+channel size is 1
+--------------------
+channel size is 1
+--------------------
+channel size is 1
+--------------------
+
+send blocking
+  sent Message
+FAILURE: See test.c Line 1096: test_cpu_utilization_select: Invalid select index picked
+Tests run: 1

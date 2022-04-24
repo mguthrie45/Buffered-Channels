@@ -1,0 +1,7 @@
+Running test case: test_for_basic_global_declaration : Testing for global declaration (takes around 20 seconds) ...
+channel size is 1
+--------------------
+channel size is 1
+--------------------
+FAILURE: See test.c Line 1355: test_for_basic_global_declaration: It isn't blocked as expected
+Tests run: 1

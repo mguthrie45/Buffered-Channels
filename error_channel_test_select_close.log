@@ -1,0 +1,9 @@
+Running test case: test_select_close : Testing select with close ...
+channel size is 1
+--------------------
+channel size is 1
+--------------------
+channel size is 1
+--------------------
+FAILURE: See test.c Line 951: test_select_close: Channel is closed, it should propogate the same error
+Tests run: 1

@@ -1,0 +1,48 @@
+==================
+WARNING: ThreadSanitizer: data race (pid=94498)
+  Read of size 4 at 0x7ffd394f7ee8 by main thread:
+    #0 test_select /home/htillinger/p3-tgroup20/test.c:803 (channel_sanitize+0xa5e7d)
+    #1 single_test /home/htillinger/p3-tgroup20/test.c:2057 (channel_sanitize+0xaa985)
+    #2 main /home/htillinger/p3-tgroup20/test.c:2096 (channel_sanitize+0x95be)
+
+  Previous write of size 4 at 0x7ffd394f7ee8 by thread T1:
+    #0 helper_select /home/htillinger/p3-tgroup20/test.c:103 (channel_sanitize+0xa40e5)
+
+  As if synchronized via sleep:
+    #0 usleep <null> (channel_sanitize+0x36e8f)
+    #1 test_select /home/htillinger/p3-tgroup20/test.c:802 (channel_sanitize+0xa5e73)
+    #2 single_test /home/htillinger/p3-tgroup20/test.c:2057 (channel_sanitize+0xaa985)
+    #3 main /home/htillinger/p3-tgroup20/test.c:2096 (channel_sanitize+0x95be)
+
+  Location is stack of main thread.
+
+  Location is global '<null>' at 0x000000000000 ([stack]+0x00000001dee8)
+
+  Thread T1 (tid=94501, finished) created by main thread at:
+    #0 pthread_create <null> (channel_sanitize+0x12982)
+    #1 test_select /home/htillinger/p3-tgroup20/test.c:799 (channel_sanitize+0xa5e69)
+    #2 single_test /home/htillinger/p3-tgroup20/test.c:2057 (channel_sanitize+0xaa985)
+    #3 main /home/htillinger/p3-tgroup20/test.c:2096 (channel_sanitize+0x95be)
+
+SUMMARY: ThreadSanitizer: data race /home/htillinger/p3-tgroup20/test.c:803 in test_select
+==================
+==================
+WARNING: ThreadSanitizer: thread leak (pid=94498)
+  Thread T1 (tid=94501, finished) created by main thread at:
+    #0 pthread_create <null> (channel_sanitize+0x12982)
+    #1 test_select /home/htillinger/p3-tgroup20/test.c:799 (channel_sanitize+0xa5e69)
+    #2 single_test /home/htillinger/p3-tgroup20/test.c:2057 (channel_sanitize+0xaa985)
+    #3 main /home/htillinger/p3-tgroup20/test.c:2096 (channel_sanitize+0x95be)
+
+SUMMARY: ThreadSanitizer: thread leak (/home/htillinger/p3-tgroup20/channel_sanitize+0x12982) in __interceptor_pthread_create
+==================
+ThreadSanitizer: reported 2 warnings
+Running test case: test_select : Testing select API ...
+channel size is 1
+--------------------
+channel size is 1
+--------------------
+channel size is 1
+--------------------
+FAILURE: See test.c Line 803: test_select: It isn't blocked as expected
+Tests run: 1

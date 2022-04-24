@@ -1,0 +1,48 @@
+==================
+WARNING: ThreadSanitizer: data race (pid=98368)
+  Read of size 4 at 0x7ffc536ab718 by main thread:
+    #0 test_select_with_select /home/htillinger/p3-tgroup20/test.c:1574 (channel_sanitize+0xa9938)
+    #1 test_select_with_select_unbuffered /home/htillinger/p3-tgroup20/test.c:1605 (channel_sanitize+0xa9af9)
+    #2 single_test /home/htillinger/p3-tgroup20/test.c:2057 (channel_sanitize+0xaa985)
+    #3 main /home/htillinger/p3-tgroup20/test.c:2096 (channel_sanitize+0x95be)
+
+  Previous write of size 4 at 0x7ffc536ab718 by thread T1:
+    #0 helper_select /home/htillinger/p3-tgroup20/test.c:103 (channel_sanitize+0xa40e5)
+
+  As if synchronized via sleep:
+    #0 usleep <null> (channel_sanitize+0x36e8f)
+    #1 test_select_with_select /home/htillinger/p3-tgroup20/test.c:1573 (channel_sanitize+0xa9930)
+    #2 test_select_with_select_unbuffered /home/htillinger/p3-tgroup20/test.c:1605 (channel_sanitize+0xa9af9)
+    #3 single_test /home/htillinger/p3-tgroup20/test.c:2057 (channel_sanitize+0xaa985)
+    #4 main /home/htillinger/p3-tgroup20/test.c:2096 (channel_sanitize+0x95be)
+
+  Location is stack of main thread.
+
+  Location is global '<null>' at 0x000000000000 ([stack]+0x00000001f718)
+
+  Thread T1 (tid=98371, finished) created by main thread at:
+    #0 pthread_create <null> (channel_sanitize+0x12982)
+    #1 test_select_with_select /home/htillinger/p3-tgroup20/test.c:1570 (channel_sanitize+0xa9926)
+    #2 test_select_with_select_unbuffered /home/htillinger/p3-tgroup20/test.c:1605 (channel_sanitize+0xa9af9)
+    #3 single_test /home/htillinger/p3-tgroup20/test.c:2057 (channel_sanitize+0xaa985)
+    #4 main /home/htillinger/p3-tgroup20/test.c:2096 (channel_sanitize+0x95be)
+
+SUMMARY: ThreadSanitizer: data race /home/htillinger/p3-tgroup20/test.c:1574 in test_select_with_select
+==================
+==================
+WARNING: ThreadSanitizer: thread leak (pid=98368)
+  Thread T1 (tid=98371, finished) created by main thread at:
+    #0 pthread_create <null> (channel_sanitize+0x12982)
+    #1 test_select_with_select /home/htillinger/p3-tgroup20/test.c:1570 (channel_sanitize+0xa9926)
+    #2 test_select_with_select_unbuffered /home/htillinger/p3-tgroup20/test.c:1605 (channel_sanitize+0xa9af9)
+    #3 single_test /home/htillinger/p3-tgroup20/test.c:2057 (channel_sanitize+0xaa985)
+    #4 main /home/htillinger/p3-tgroup20/test.c:2096 (channel_sanitize+0x95be)
+
+SUMMARY: ThreadSanitizer: thread leak (/home/htillinger/p3-tgroup20/channel_sanitize+0x12982) in __interceptor_pthread_create
+==================
+ThreadSanitizer: reported 2 warnings
+Running test case: test_select_with_select_unbuffered : Testing select with select : unbuffered ...
+channel size is 0
+--------------------
+FAILURE: See test.c Line 1574: test_select_with_select: It isn't blocked as expected
+Tests run: 1

@@ -1,0 +1,3 @@
+Running test case: test_select_mixed_buffered_unbuffered : Testing select with a mixture of buffered and unbuffered channels ...
+FAILURE: See test.c Line 1857: test_select_mixed_buffered_unbuffered: Received wrong index
+Tests run: 1

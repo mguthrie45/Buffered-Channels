@@ -1,0 +1,15 @@
+ThreadSanitizer:DEADLYSIGNAL
+==462465==ERROR: ThreadSanitizer: SEGV on unknown address 0x000000000008 (pc 0x557dbc4d5251 bp 0x557dbc740000 sp 0x7f81f1bbe1d0 T462467)
+==462465==The signal is caused by a READ memory access.
+==462465==Hint: address points to the zero page.
+    #0 list_find /home/max/Desktop/p3-tgroup20/linked_list.c:89 (channel_sanitize+0xa2250)
+    #1 unsubscribe_channels /home/max/Desktop/p3-tgroup20/channel.c:316 (channel_sanitize+0xa1df1)
+    #2 channel_select /home/max/Desktop/p3-tgroup20/channel.c:378 (channel_sanitize+0xa1fed)
+    #3 helper_select /home/max/Desktop/p3-tgroup20/test.c:103 (channel_sanitize+0xa501a)
+    #4 __tsan_thread_start_func <null> (channel_sanitize+0x100c6)
+    #5 start_thread /build/glibc-eX1tMB/glibc-2.31/nptl/pthread_create.c:477 (libpthread.so.0+0x9608)
+    #6 __clone <null> (libc.so.6+0x122292)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV /home/max/Desktop/p3-tgroup20/linked_list.c:89 in list_find
+==462465==ABORTING

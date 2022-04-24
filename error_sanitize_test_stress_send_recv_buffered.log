@@ -1,0 +1,19 @@
+ThreadSanitizer:DEADLYSIGNAL
+==87787==ERROR: ThreadSanitizer: SEGV on unknown address 0x000000000001 (pc 0x7f46276bb675 bp 0x7fff46074fa0 sp 0x7fff46074a28 T87787)
+==87787==The signal is caused by a READ memory access.
+==87787==Hint: address points to the zero page.
+    #0 <null> <null> (libc.so.6+0x18b674)
+    #1 <null> <null> (libc.so.6+0x7be94)
+    #2 __printf_chk <null> (libc.so.6+0x1310ea)
+    #3 printf /usr/include/x86_64-linux-gnu/bits/stdio2.h:107 (channel_sanitize+0xa13df)
+    #4 channel_send /home/htillinger/p3-tgroup20/channel.c:52 (channel_sanitize+0xa13df)
+    #5 run_stress_send_recv /home/htillinger/p3-tgroup20/stress_send_recv.c:86 (channel_sanitize+0xa393b)
+    #6 test_stress_send_recv_buffered /home/htillinger/p3-tgroup20/test.c:1302 (channel_sanitize+0xa7464)
+    #7 single_test /home/htillinger/p3-tgroup20/test.c:2057 (channel_sanitize+0xaa985)
+    #8 main /home/htillinger/p3-tgroup20/test.c:2096 (channel_sanitize+0x95be)
+    #9 __libc_start_main <null> (libc.so.6+0x270b2)
+    #10 _start <null> (channel_sanitize+0x96bd)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV (/lib/x86_64-linux-gnu/libc.so.6+0x18b674) 
+==87787==ABORTING

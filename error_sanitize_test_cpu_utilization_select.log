@@ -1,0 +1,25 @@
+==================
+WARNING: ThreadSanitizer: thread leak (pid=97139)
+  Thread T1 (tid=97142, finished) created by main thread at:
+    #0 pthread_create <null> (channel_sanitize+0x12982)
+    #1 test_cpu_utilization_select /home/htillinger/p3-tgroup20/test.c:1080 (channel_sanitize+0xa68f2)
+    #2 single_test /home/htillinger/p3-tgroup20/test.c:2057 (channel_sanitize+0xaa985)
+    #3 main /home/htillinger/p3-tgroup20/test.c:2096 (channel_sanitize+0x95be)
+
+  And 99 more similar thread leaks.
+
+SUMMARY: ThreadSanitizer: thread leak (/home/htillinger/p3-tgroup20/channel_sanitize+0x12982) in __interceptor_pthread_create
+==================
+ThreadSanitizer: reported 1 warnings
+Running test case: test_cpu_utilization_select : Testing CPU utilization for select API (takes around 30 seconds) ...
+channel size is 1
+--------------------
+channel size is 1
+--------------------
+channel size is 1
+--------------------
+
+send blocking
+  sent Message
+FAILURE: See test.c Line 1096: test_cpu_utilization_select: Invalid select index picked
+Tests run: 1

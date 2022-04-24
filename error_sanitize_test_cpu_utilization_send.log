@@ -1,0 +1,3 @@
+Running test case: test_cpu_utilization_send : Testing CPU utilization for send API (takes around 30 seconds) ...
+FAILURE: See test.c Line 998: test_cpu_utilization_send: Invalid message
+Tests run: 1

@@ -1,0 +1,48 @@
+==================
+WARNING: ThreadSanitizer: data race (pid=94517)
+  Read of size 4 at 0x7ffdf2d204e8 by main thread:
+    #0 test_select_and_non_blocking_send /home/htillinger/p3-tgroup20/test.c:1469 (channel_sanitize+0xa947a)
+    #1 test_select_and_non_blocking_send_buffered /home/htillinger/p3-tgroup20/test.c:1541 (channel_sanitize+0xa959c)
+    #2 single_test /home/htillinger/p3-tgroup20/test.c:2057 (channel_sanitize+0xaa985)
+    #3 main /home/htillinger/p3-tgroup20/test.c:2096 (channel_sanitize+0x95be)
+
+  Previous write of size 4 at 0x7ffdf2d204e8 by thread T1:
+    #0 helper_select /home/htillinger/p3-tgroup20/test.c:103 (channel_sanitize+0xa40e5)
+
+  As if synchronized via sleep:
+    #0 usleep <null> (channel_sanitize+0x36e8f)
+    #1 test_select_and_non_blocking_send /home/htillinger/p3-tgroup20/test.c:1468 (channel_sanitize+0xa9472)
+    #2 test_select_and_non_blocking_send_buffered /home/htillinger/p3-tgroup20/test.c:1541 (channel_sanitize+0xa959c)
+    #3 single_test /home/htillinger/p3-tgroup20/test.c:2057 (channel_sanitize+0xaa985)
+    #4 main /home/htillinger/p3-tgroup20/test.c:2096 (channel_sanitize+0x95be)
+
+  Location is stack of main thread.
+
+  Location is global '<null>' at 0x000000000000 ([stack]+0x00000001f4e8)
+
+  Thread T1 (tid=94519, finished) created by main thread at:
+    #0 pthread_create <null> (channel_sanitize+0x12982)
+    #1 test_select_and_non_blocking_send /home/htillinger/p3-tgroup20/test.c:1465 (channel_sanitize+0xa9468)
+    #2 test_select_and_non_blocking_send_buffered /home/htillinger/p3-tgroup20/test.c:1541 (channel_sanitize+0xa959c)
+    #3 single_test /home/htillinger/p3-tgroup20/test.c:2057 (channel_sanitize+0xaa985)
+    #4 main /home/htillinger/p3-tgroup20/test.c:2096 (channel_sanitize+0x95be)
+
+SUMMARY: ThreadSanitizer: data race /home/htillinger/p3-tgroup20/test.c:1469 in test_select_and_non_blocking_send
+==================
+==================
+WARNING: ThreadSanitizer: thread leak (pid=94517)
+  Thread T1 (tid=94519, finished) created by main thread at:
+    #0 pthread_create <null> (channel_sanitize+0x12982)
+    #1 test_select_and_non_blocking_send /home/htillinger/p3-tgroup20/test.c:1465 (channel_sanitize+0xa9468)
+    #2 test_select_and_non_blocking_send_buffered /home/htillinger/p3-tgroup20/test.c:1541 (channel_sanitize+0xa959c)
+    #3 single_test /home/htillinger/p3-tgroup20/test.c:2057 (channel_sanitize+0xaa985)
+    #4 main /home/htillinger/p3-tgroup20/test.c:2096 (channel_sanitize+0x95be)
+
+SUMMARY: ThreadSanitizer: thread leak (/home/htillinger/p3-tgroup20/channel_sanitize+0x12982) in __interceptor_pthread_create
+==================
+ThreadSanitizer: reported 2 warnings
+Running test case: test_select_and_non_blocking_send_buffered : Testing select and non-blocking send : buffered ...
+channel size is 1
+--------------------
+FAILURE: See test.c Line 1469: test_select_and_non_blocking_send: It isn't blocked as expected
+Tests run: 1

@@ -1,0 +1,8 @@
+Running test case: test_select_with_duplicate_channel_buffered : Testing select with duplicate operations on same channel: buffered ...
+channel size is 1
+--------------------
+
+send blocking
+  sent Message
+FAILURE: See test.c Line 1773: test_select_with_duplicate_channel: Invalid index
+Tests run: 1

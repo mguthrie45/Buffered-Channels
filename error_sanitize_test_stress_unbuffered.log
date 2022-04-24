@@ -1,0 +1,20 @@
+ThreadSanitizer:DEADLYSIGNAL
+==99062==ERROR: ThreadSanitizer: SEGV on unknown address 0x7b1800612000 (pc 0x55ef4610ef98 bp 0x7b1800612000 sp 0x7fbb306be230 T99065)
+==99062==The signal is caused by a READ memory access.
+ThreadSanitizer:DEADLYSIGNAL
+ThreadSanitizer:DEADLYSIGNAL
+ThreadSanitizer:DEADLYSIGNAL
+ThreadSanitizer:DEADLYSIGNAL
+ThreadSanitizer:DEADLYSIGNAL
+ThreadSanitizer:DEADLYSIGNAL
+ThreadSanitizer:DEADLYSIGNAL
+ThreadSanitizer:DEADLYSIGNAL
+ThreadSanitizer:DEADLYSIGNAL
+    #0 router /home/htillinger/p3-tgroup20/stress.c:204 (channel_sanitize+0xa1f97)
+    #1 __tsan_thread_start_func <null> (channel_sanitize+0x100c6)
+    #2 start_thread /build/glibc-eX1tMB/glibc-2.31/nptl/pthread_create.c:477 (libpthread.so.0+0x9608)
+    #3 __clone <null> (libc.so.6+0x122292)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV /home/htillinger/p3-tgroup20/stress.c:204 in router
+==99062==ABORTING

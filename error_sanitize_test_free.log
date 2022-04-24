@@ -1,0 +1,5 @@
+Running test case: test_free : Testing channel destroy ...
+channel size is 2
+--------------------
+FAILURE: See test.c Line 1118: test_free: Doesn't report error if the channel is closed
+Tests run: 1

@@ -1,0 +1,24 @@
+Running test case: test_select_and_non_blocking_send_unbuffered : Testing select and non-blocking send : unbuffered ...
+channel size is 0
+--------------------
+
+calling select()
+insert 0x7f2b70ab7e80 to recv_sel
+ins head NULL before
+node stuff
+increment count 1
+--------------LIST CHECK: 1-------------
+now has 1 nodes
+  subscribed channels
+non-blocking recv
+  sent signal
+    would block
+  no ops found, must wait
+send
+
+send non-blocking
+Waking all receivers
+iterated 0x7f2b70ab7e80
+here
+FAILURE: See test.c Line 1471: test_select_and_non_blocking_send: Non-blocking send failed
+Tests run: 1
